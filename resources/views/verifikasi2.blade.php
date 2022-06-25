@@ -75,10 +75,8 @@
               <h3 class="fw-light font-base fs-6 fs-xxl-7"><strong>Sistem Kendali Dokumen Jurusan Ilmu Komputer</strong></h3>
               <p class="fs-1 mb-2">Dokumen jurusan Ilmu Komputer yang diterbitkan <br />secara digital dapat diperiksa keasliannya dengan menggunakan halaman ini. </p>
               <div class="position-relative w-100 mt-3">
-                <form action="{{ route('search') }}" method="GET">
-                  <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" name="search" placeholder="Kode Hash" style="height: 58px;">
-                  <button type="submit" class="btn btn-primary rounded-pill py-2 px-3 shadow-none position-absolute top-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Periksa</button>
-                </form>
+                <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Kode Hash" style="height: 58px;">
+                <button type="button" class="btn btn-primary rounded-pill py-2 px-3 shadow-none position-absolute top-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Periksa</button>
             </div>
             </div>
           </div>
@@ -88,7 +86,62 @@
     <!--    End of Main Content-->
     <!-- ===============================================-->
 
-    
+    <!-- Modal -->
+<div class="modal fade modal-open" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Hasil Verifikasi:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <table class="table table-borderless">
+              <tbody class="tbody">
+                  <tr>
+                      <th scope="col-5">Status</th>
+                      <td scope="col">:<strong> {{ $qrcodes ? 'Valid' : 'Invalid' }} </strong></td>
+                  </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <th scope="col-5">Author</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->dokumen->user->nama : '' }}</td>
+                  </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <th scope="col">Judul Dokumen</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->dokumen->judul : '' }}</td>
+                  </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <th scope="col">Kategori Dokumen</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->dokumen->kategori->nama : '' }}</td>
+                  </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <th scope="col">Hash</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->hash : '' }}</td>
+                  </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <th scope="col">Tanggal Buat</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->created_at : '' }}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <!-- ===============================================-->

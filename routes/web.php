@@ -30,7 +30,8 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/dashboard', [HomeController::class, 'dashboard']);
 Route::get('/admin', [HomeController::class, 'admin']);
 // $link = '/verifikasi/'.urlencode('lita/amelia');
-Route::get('/verifikasi/{qrcodes}', [HomeController::class, 'verifikasi'])->name("verifikasi");
+// Route::get('/verifikasi/{qrcodes}', [HomeController::class, 'verifikasi'])->name("verifikasi");
+Route::get('/verifikasi', [HomeController::class, 'verifikasi'])->name("verifikasi");
 
 Route::get('/users', [AuthController::class, 'index']);
 Route::post('/users/action/{user}', [AuthController::class, 'action'])->name("user.action");
@@ -58,9 +59,9 @@ Route::get('/qrcode/{dokumen}/create', [QrcodeController::class, 'create']);
 Route::get('/cetak/{qrcode:hash}', [QrcodeController::class, 'print']);
 Route::delete('/qrcode/{qrcode}', [QrcodeController::class, 'destroy']);
 
-Route::get('/coba', [HomeController::class, 'coba']);
-Route::get('/coba/cari', [HomeController::class, 'cobacari'])->name('cari');
+// Route::get('/coba', [HomeController::class, 'index']);
+// Route::get('/coba/cari', [HomeController::class, 'cobacari'])->name('cari');
 
-Route::get('/sign', [SignController::class, 'index'])->name('sign');
-Route::get('/sign/search', [SignController::class, 'search'])->name('search');
+// Route::get('/sign', [SignController::class, 'index'])->name('sign');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 

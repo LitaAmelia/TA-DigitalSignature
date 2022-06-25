@@ -26,13 +26,6 @@
     <!--    Stylesheets-->
     <!-- ===============================================-->
     <link href="{{ asset('') }}asset/css/theme.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-	    $(document).ready(function(){
-		  $("#exampleModal").modal('show');
-	  });
-</script>
   </head>
 
   <body>
@@ -54,7 +47,7 @@
                   <li class="nav-item px-2">
                     <form action="/logout" method="post">
                       @csrf
-                      <button class="dropdown-item" type="submit">Logout</button>
+                      <button class="dropdown-item" type="submit">Log Out</button>
                     </form>
                   </li>
                 </ul>
@@ -75,9 +68,9 @@
               <h3 class="fw-light font-base fs-6 fs-xxl-7"><strong>Sistem Kendali Dokumen Jurusan Ilmu Komputer</strong></h3>
               <p class="fs-1 mb-2">Dokumen jurusan Ilmu Komputer yang diterbitkan <br />secara digital dapat diperiksa keasliannya dengan menggunakan halaman ini. </p>
               <div class="position-relative w-100 mt-3">
-                <form action="{{ route('cari') }}" method="GET">
-                  <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" name="search" placeholder="Kode Hash" style="height: 58px;">
-                  <button type="submit" class="btn btn-primary rounded-pill py-2 px-3 shadow-none position-absolute top-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Periksa</button>
+                <form action="{{ route('search') }}" method="GET">
+                  <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" name="search" placeholder="Kode Hash" value="{{ old('search') }}" style="height: 58px;">
+                  <button type="submit" value="search" class="btn btn-primary rounded-pill py-2 px-3 shadow-none position-absolute top-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Periksa</button>
                 </form>
             </div>
             </div>
@@ -88,32 +81,76 @@
     <!--    End of Main Content-->
     <!-- ===============================================-->
 
-    
-
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Hasil Verifikasi:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <table class="table table-borderless">
+              <tbody class="tbody">
+                  <tr>
+                      <th scope="col-5">Status</th>
+                      <td scope="col">:<strong> {{ $qrcodes ? 'Valid' : 'Invalid' }} </strong></td>
+                  </tr>
+              </tbody>
+              {{-- <tbody>
+                  <tr>
+                      <th scope="col-5">Author</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->dokumen->user->nama : '' }}</td>
+                  </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <th scope="col">Judul Dokumen</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->dokumen->judul : '' }}</td>
+                  </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <th scope="col">Kategori Dokumen</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->dokumen->kategori->nama : '' }}</td>
+                  </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <th scope="col">Hash</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->hash : '' }}</td>
+                  </tr>
+              </tbody>
+              <tbody>
+                  <tr>
+                      <th scope="col">Tanggal Buat</th>
+                      <td scope="col">: {{ $qrcodes ? $qrcodes->created_at : '' }}</td>
+                  </tr>
+              </tbody> --}}
+          </table>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    {{-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script> --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="{{ asset('') }}asset/vendors/@popperjs/popper.min.js"></script>
     <script src="{{ asset('') }}asset/vendors/bootstrap/bootstrap.min.js"></script>
     <script src="{{ asset('') }}asset/vendors/is/is.min.js"></script>
     <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="{{ asset('') }}asset/vendors/fontawesome/all.min.js"></script>
+    <script src="{{ asset('') }}assetvendors/fontawesome/all.min.js"></script>
     <script src="{{ asset('') }}asset/js/theme.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&amp;display=swap" rel="stylesheet">
-
-    {{-- <script type="text/javascript">
-        exampleModal.show()
-    </script> --}}
   </body>
 
 </html>

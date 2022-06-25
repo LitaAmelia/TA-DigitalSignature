@@ -13,12 +13,11 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class HomeController extends Controller
 {
-    public function index(Qrcodes $qrcodes)
+    public function index()
     {
         // $qrcodes = Qrcodes::whereHash($hashCode)->first();
         return view('index', [
             'title' => 'Digital Signature',
-            'qrcodes' => $qrcodes
         ]);
     }
 
@@ -52,18 +51,18 @@ class HomeController extends Controller
         ]);
     }
 
-    public function coba() {
-        return view('coba', [
-            'title' => 'Pencarian',
-        ]);
-    }
+    // public function coba() {
+    //     return view('coba', [
+    //         'title' => 'Pencarian',
+    //     ]);
+    // }
 
-    public function cobacari(Request $request) {
+    public function search(Request $request) {
 
         $search = $request->search;
         
         $qrcodes = Qrcodes::where('hash', 'LIKE', "%{$search}%")->first();
-        return view('coba2',[
+        return view('verifikasi',[
             'title' => 'Pencarian',
             'qrcodes' => $qrcodes
         ]);

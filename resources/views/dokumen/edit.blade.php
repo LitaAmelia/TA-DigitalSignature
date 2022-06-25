@@ -53,7 +53,8 @@
                       </div>
                   @enderror
               </div>
-          <button type="submit" class="btn btn-primary btn-sm mr-2">Update Data</button>
+              <a href="/dokumen" class="btn btn-primary btn-sm mr-2"><span data-feather="arrow-left"></span>Kembali</a>
+              <button type="submit" class="btn btn-primary btn-sm mr-2">Update Data</button>
           {{-- <button class="btn btn-light">Cancel</button> --}}
         </form>
       </div>
