@@ -135,6 +135,20 @@
                         <td scope="col">: {{ $qrcodes ? $qrcodes->created_at : '' }}</td>
                     </tr>
                 </tbody>
+                <tbody>
+                    <tr>
+                        <th scope="col">Tanggal Buat</th>
+                        <td scope="col">: {{ $qrcodes ? $qrcodes->created_at : '' }}</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <th scope="col">Unduh Dokumen</th>
+                    @if($qrcodes)
+                    <td scope="col">: <a href="/cetak/{{$qrcodes->hash}}" class="btn btn-primary btn-sm">Cetak</a></td>
+                  @endif
+                  </tr>
+                </tbody>
             </table>
         </div>
         </div>

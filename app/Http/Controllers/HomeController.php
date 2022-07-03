@@ -51,12 +51,6 @@ class HomeController extends Controller
         ]);
     }
 
-    // public function coba() {
-    //     return view('coba', [
-    //         'title' => 'Pencarian',
-    //     ]);
-    // }
-
     public function search(Request $request) {
 
         $search = $request->search;
@@ -66,6 +60,5 @@ class HomeController extends Controller
             'title' => 'Pencarian',
             'qrcodes' => $qrcodes
         ]);
-
     }
 }

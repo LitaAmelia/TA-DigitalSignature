@@ -50,12 +50,8 @@ class QrcodeController extends Controller
         //$rules['user_id'] = auth()->user()->id;
 
         $qr = QrCode::format('png')
-        // ->merge('img/t.jpg', 0.1, true)
         ->size(100)->errorCorrection('H')
-        // ->generate(route("verifikasi", $rules['hash']) . "?kode=" . $rules['hash']);    
-        // ->generate(route("verifikasi") . "?kode=" . $rules['hash']);
         ->generate(route("search") . "?search=" . $rules['hash']);
-        // ->generate(route("verifikasi", $rules['hash']) . "?kode=" . $rules['hash']);    
 
         $output_file = '/image/qr-code/img-' . time() . '.png';
         Storage::disk('public')->put($output_file, $qr);

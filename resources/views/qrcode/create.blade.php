@@ -19,7 +19,12 @@
             </div>
             <div class="form-group">
               <label for="hash">Digital Signature</label>
-              <input type="text" class="form-control @error('hash') is-invalid @enderror" id="hash" name="hash">
+              <div class="input-group col-xs-12">
+                <input type="text" class="form-control @error('hash') is-invalid @enderror" id="hash" name="hash">
+                <span class="input-group-append">
+                  <button class="btn btn-primary" onclick="generateString(8)" type="button">Generate String</button>
+                </span>
+              </div>
               @error('hash')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -32,20 +37,20 @@
         </div>
       </div>
     </div>
-    {{-- <div class="col-md-6 grid-margin stretch-card">
-      <div class="card">
-        <div class="card-body">
-         <div class="d-flex justify-content-between">
-          <p class="card-title">QR Code</p>
-          <a href="#" class="text-info">View all</a>
-         </div>
-         <img src="{{ asset('') }}img/qrcode.jpg">
-          <p class="font-weight-500">The total number of sessions within the date range. It is the period time a user is actively engaged with your website, page or app, etc</p>
-          <div id="sales-legend" class="chartjs-legend mt-4 mb-2"></div>
-          <canvas id="sales-chart"></canvas>
-        </div>
-      </div>
-    </div> --}}
   </div>
   
+  <script>
+    const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    function generateString(length) {
+        let result = '';
+        const charactersLength = characters.length;
+        for ( let i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+
+        const hash = document.getElementById('hash');
+        hash.value = result;
+    }
+  </script>
 @endsection
