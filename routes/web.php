@@ -62,6 +62,5 @@ Route::delete('/qrcode/{qrcode}', [QrcodeController::class, 'destroy']);
 // Route::get('/coba', [HomeController::class, 'index']);
 // Route::get('/coba/cari', [HomeController::class, 'cobacari'])->name('cari');
 
-// Route::get('/sign', [SignController::class, 'index'])->name('sign');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 
