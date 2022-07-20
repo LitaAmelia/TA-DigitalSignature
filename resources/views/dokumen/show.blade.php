@@ -7,7 +7,7 @@
             <h3 class="mb-3">{{ $dokumen->judul }}</h3>
             
             <div>
-                <a href="/dokumen" class="btn btn-info mb-3 btn-sm"><span data-feather="arrow-left"></span>Kembali</a>
+                <a href="/dashboard" class="btn btn-info mb-3 btn-sm"><span data-feather="arrow-left"></span>Kembali</a>
                 <a href="/qrcode/{{ $dokumen->slug }}/create" class="btn btn-info mb-3 btn-sm"><span data-feather="arrow-left"></span> Generate QR Code</a>
             </div>
             <div>

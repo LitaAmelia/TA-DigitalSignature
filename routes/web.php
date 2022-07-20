@@ -28,9 +28,9 @@ use App\Http\Controllers\SignController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/dashboard', [HomeController::class, 'dashboard']);
+Route::post('/store', [HomeController::class, 'store'])->name('home.store');
+Route::post('/store/media', [HomeController::class, 'storeMedia'])->name('home.storeMedia');
 Route::get('/admin', [HomeController::class, 'admin']);
-// $link = '/verifikasi/'.urlencode('lita/amelia');
-// Route::get('/verifikasi/{qrcodes}', [HomeController::class, 'verifikasi'])->name("verifikasi");
 Route::get('/verifikasi', [HomeController::class, 'verifikasi'])->name("verifikasi");
 
 Route::get('/users', [AuthController::class, 'index']);

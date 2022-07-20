@@ -1,4 +1,3 @@
-<!-- partial:partials/_sidebar.html -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     
     <ul class="nav">
@@ -8,21 +7,15 @@
           <i class="icon-grid menu-icon"></i>
           <span class="menu-title">Dashboard</span>
         </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link {{ Request::is('/dokumen*') ? 'active' : '' }}" href="{{ url('/dokumen') }}">
-          <i class="icon-paper menu-icon"></i>
-          <span class="menu-title">Dokumen</span>
-        </a>
-      </li>
-     
+      </li>     
       <li class="nav-item">
         <a class="nav-link {{ Request::is('/qrcode*') ? 'active' : '' }}" href="{{ url('/qrcode') }}">
-          <i class="icon-grid menu-icon"></i>
+          <i class="icon-paper menu-icon"></i>
           <span class="menu-title">QR-Code</span>
         </a>
       </li>
       @endcan
+
       @can('admin')
       <li class="nav-item">
         <a class="nav-link {{ Request::is('/admin*') ? 'active' : '' }}" href="{{ url('/admin') }}">
@@ -44,24 +37,5 @@
       </li>
       @endcan
     </ul>
-
-    {{-- @can('admin')
-    
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link {{ Request::is('/user*') ? 'active' : '' }}" href="{{ url('/user') }}">
-          <i class="icon-align-right menu-icon"></i>
-          <span class="menu-title">User</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link {{ Request::is('/kategori*') ? 'active' : '' }}" href="{{ url('/kategori') }}">
-          <i class="icon-align-right menu-icon"></i>
-          <span class="menu-title">Kategori</span>
-        </a>
-      </li>
-    </ul>
-
-    @endcan --}}
 
   </nav>

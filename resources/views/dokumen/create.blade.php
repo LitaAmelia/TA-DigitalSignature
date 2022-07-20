@@ -48,7 +48,7 @@
                       </div>
                   @enderror
               </div>
-              <a href="/dokumen" class="btn btn-primary btn-sm mr-2"><span data-feather="arrow-left"></span>Kembali</a>
+              <a href="/dashboard" class="btn btn-primary btn-sm mr-2"><span data-feather="arrow-left"></span>Kembali</a>
               <button type="submit" class="btn btn-primary btn-sm mr-2">Tambah Dokumen</button>
         </form>
       </div>

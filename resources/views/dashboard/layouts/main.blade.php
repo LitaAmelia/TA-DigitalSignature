@@ -23,6 +23,9 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('') }}assets/css/vertical-layout-light/style.css">
   <!-- endinject -->
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+
   <link rel="shortcut icon" href="{{ asset('') }}assets/images/favicon.png" />
 </head>
 <body>
@@ -48,8 +51,11 @@
   <!-- container-scroller -->
 
   @include('sweetalert::alert')
-
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+
   <!-- plugins:js -->
   <script src="{{ asset('') }}assets/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -78,6 +84,8 @@
   <script src="{{ asset('') }}assets/js/jquery.cookie.js" type="text/javascript"></script>
   <script src="{{ asset('') }}assets/js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  @yield('myscript')
 </body>
 
 </html>

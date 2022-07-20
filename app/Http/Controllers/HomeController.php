@@ -9,6 +9,7 @@ use App\Models\Dokumen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class HomeController extends Controller
@@ -23,13 +24,52 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard.index', [
+        return view('dashboard.dokumen', [
             'categories' => Kategori::withCount([
                 'dokumens' => function ($query) {
                     $query->whereUserId(Auth::user()->id);
                 }
             ])->get(),
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'kategoris' => Kategori::all(),
+            'dokumens' => Dokumen::where('user_id', auth()->user()->id)->get()
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $no = 0;
+        foreach ($request->input('dokumen', []) as $file) {
+            $judul = substr($file, 0, -4);
+            $slug = Str::slug($judul);
+            $namaFile = $request->input('nama_file_', []);
+            $data = [
+                'user_id' => auth()->user()->id,
+                'kategori_id' => $request->input('kategori_id'),
+                'judul' => $judul,
+                'slug' => $slug,
+                'file' => $namaFile[$no++],
+            ];
+            Dokumen::create($data);
+
+        }
+        return redirect('/dashboard#dokumen_show')->with('success', 'Dokumen baru berhasil ditambahkan!');
+    }
+
+    public function storeMedia(Request $request)
+    {
+        $path = storage_path('dokumen');
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        $file = $request->file('file');
+        $nama_string = $file->store('dokumen');
+
+        return response()->json([
+            'original_name' => $file->getClientOriginalName(),
+            'nama_string' => $nama_string
         ]);
     }
 

@@ -18,7 +18,7 @@ class CreateDokumensTable extends Migration
             $table->foreignID('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignID('kategori_id')->constrained('kategoris')->onUpdate('cascade')->onDelete('cascade');
             $table->string('judul');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->string('file');
             $table->timestamps(); 
         });

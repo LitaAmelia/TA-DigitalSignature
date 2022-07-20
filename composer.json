@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.5",
         "realrashid/sweet-alert": "^5.1",
         "setasign/fpdi-fpdf": "^2.3",
-        "simplesoftwareio/simple-qrcode": "~4"
+        "simplesoftwareio/simple-qrcode": "~4",
+        "spatie/laravel-medialibrary": "^9.0.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

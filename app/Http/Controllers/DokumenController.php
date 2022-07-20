@@ -134,7 +134,7 @@ class DokumenController extends Controller
         Dokumen::where('id', $dokumen->id)
             ->update($validatedData);
 
-        return redirect('/dokumen')->with('success', 'Data telah berhasil diupdate!');
+        return redirect('/dashboard')->with('success', 'Data telah berhasil diupdate!');
     }
 
     /**
@@ -150,7 +150,7 @@ class DokumenController extends Controller
         }
 
         Dokumen::destroy($dokumen->id);
-        return redirect('/dokumen')->with('success', 'Data telah berhasil dihapus!');
+        return redirect('/dashboard')->with('success', 'Data telah berhasil dihapus!');
     }
 
     public function checkSlug(Request $request)
