@@ -19,7 +19,7 @@
             @enderror
           </div>
           <div class="form-group">
-            <input type="number" name="npm" class="form-control form-control-lg @error('npm') is-invalid @enderror" id="npm" placeholder="Nomor Pokok Mahasiswa" required value="{{ old('npm') }}">
+            <input type="number" name="npm" class="form-control form-control-lg @error('npm') is-invalid @enderror" id="npm" placeholder="NIP/NIK/NPM" required value="{{ old('npm') }}">
             @error('npm')
                 <div class="invalid-feedback">
                     {{ $message }}

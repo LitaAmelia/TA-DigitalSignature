@@ -73,7 +73,7 @@ class AuthController extends Controller
     {
         $rules = $request->validate([
             'nama' => 'required|max:255',
-            'npm' => 'required|max:10|unique:users',
+            'npm' => 'required|unique:users',
             'username' => 'required|min:3|max:255|unique:users',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|max:255'
@@ -82,7 +82,6 @@ class AuthController extends Controller
             'nama.required' => 'Nama harus diisi!',
             'nama.max' => 'Nama harus kurang dari 255 karakter',
             'npm.required' => 'NPM harus diisi!',
-            'npm.max' => 'NPM harus kurang dari 10 karakter',
             'npm.unique' => 'NPM sudah terdaftar',
             'username.required' => 'Username harus diisi!',
             'username.min' => 'Username harus lebih dari 3 karakter',

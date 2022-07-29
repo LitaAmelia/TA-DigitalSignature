@@ -12,7 +12,7 @@
                 <tr>
                   <th>#</th>
                   <th>Nama</th>
-                  <th>NPM</th>
+                  <th>NIP/NIK/NPM</th>
                   <th>Email</th>
                   <th>Status</th>
                   <th>Aksi</th>
