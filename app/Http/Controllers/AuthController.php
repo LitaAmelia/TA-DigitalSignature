@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function index() {
-        return view('auth.index', [
+        return view('user.index', [
             'title' => 'Users',
             'users' => User::all()
             // 'users' => User::whereIsActive(0)->get()
