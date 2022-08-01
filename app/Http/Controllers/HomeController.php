@@ -39,7 +39,11 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $no = 0;
+        if (!$request->input('dokumen', [])) {
+            return redirect('/dashboard')->with('warning', 'File is null');
+        }
         foreach ($request->input('dokumen', []) as $file) {
+
             $judul = substr($file, 0, -4);
             $slug = Str::slug($judul);
             $namaFile = $request->input('nama_file_', []);
@@ -51,7 +55,6 @@ class HomeController extends Controller
                 'file' => $namaFile[$no++],
             ];
             Dokumen::create($data);
-
         }
         return redirect('/dashboard#dokumen_show')->with('success', 'Dokumen baru berhasil ditambahkan!');
     }
