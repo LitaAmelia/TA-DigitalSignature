@@ -17,7 +17,7 @@
                   </div>
                 @enderror
               </div>
-              <div class="mb-3">
+              {{-- <div class="mb-3">
                   <label for="slug" class="form-label">Slug</label>
                   <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug', $dokumen->slug) }}">
                   @error('slug')
@@ -25,7 +25,7 @@
                           {{ $message }}
                       </div>
                   @enderror
-              </div>
+              </div> --}}
               <div class="mb-3">
                   <label for="kategori_id" class="form-label">Kategori</label>
                   <select class="form-control" name="kategori_id">

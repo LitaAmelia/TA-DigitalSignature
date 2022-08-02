@@ -41,7 +41,7 @@ class AuthController extends Controller
         $user = User::whereUsername($request->username)->first();
         if($user){
             if(!$user->is_active){
-                return back()->with('loginError', 'Akun sedang dalam menunggu persetujuan admin, mohon tunggu 1x24 jam');
+                return back()->with('loginError', 'Akun belum aktif, admin akan segera mengaktifkan akun');
             }
         }else{
             return back()->with('loginError', 'Login Gagal!');
@@ -98,7 +98,7 @@ class AuthController extends Controller
 
         User::create($rules);
 
-        return redirect('/login')->with('success', 'Registrasi Berhasil! akun akan segera diaktifkan');
+        return redirect('/login')->with('success', 'Registrasi Berhasil! Akun sedang dalam menunggu persetujuan admin, mohon tunggu 1x24 jam');
     }
 
     public function action(Request $request, User $user)

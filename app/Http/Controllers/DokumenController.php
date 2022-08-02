@@ -116,9 +116,9 @@ class DokumenController extends Controller
             'file' => 'file|mimes:pdf|max:1024'
         ];
 
-        if($request->slug != $dokumen->slug) {
-            $rules['slug'] = 'required|unique:dokumen';
-        }
+        // if($request->slug != $dokumen->slug) {
+        //     $rules['slug'] = 'required|unique:dokumen';
+        // }
 
         $validatedData = $request->validate($rules);
 
